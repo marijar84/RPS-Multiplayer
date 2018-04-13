@@ -1,8 +1,47 @@
+
+html,body{
+    background-image: url('../../assets/images/background.png');
+    text-align: center;       
+    overflow: auto;
+
+}
+
+.jumbotron {
+    color: white !important;
+   background-color: black !important; ;
+}
+
+#opponent{
+    visibility: hidden;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #chats{
     height: 250px;
 }
 
 .image{
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
 } 
+
+#headerModal{
+    background: black;
+    color: white;
+}
+
+.selectImage{
+    border: 1px solid red;
+}
+
+.noSelectImage{
+    border: 0px;
+}
+
+#titleResult{
+    font-size: 40px;
+    color: red;
+}

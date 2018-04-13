@@ -26,65 +26,80 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-
-    <link href="https://fonts.googleapis.com/css?family=Acme|Poppins|Shadows+Into+Light" rel="stylesheet">
-
-
-
 </head>
 
 <body>
     <div class="jumbotron">
-        <h1 class="display-4">Rack, paper Scissors!</h1>
-        <hr class="my-4">
+        <h1 class="display-4">Rock, paper Scissors!</h1>
     </div>
-
     <div class="row">
         <div class="container">
-            <form class="form-inline">
-                <div class="form-group mb-2">
-                    <label for="exampleFormControlTextarea1">Username</label>
-                    <input type="text" class="form-control" id="userName" placeholder="username">
-                </div>
-                <button type="submit" id="saveUser" class="btn btn-primary mb-2">Save username</button>
-            </form>
-        </div>
-    </div>
-    <br/>
-    <div class="row">
-        <div class="container">
-            <h1>Hi! You are Player 1</h1>
+            <div class="col-md-8">
+                <h1 id="player1"></h1>
+            </div>
+            <div class="col-md-4">
+                <h1>Chat</h1>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="container">
             <div class="col-md-8">
-                <div class="container">
-                    <div class="col-md-3">
+                <div class="col-md-6">
+                    <div class="row">
                         <div class="alert alert-success" role="alert">
-                            <h1 class="display-4" id="user"></h1>
+                            <h1 class="display-4">Player 1</h1>
                         </div>
-                        <img src="assets/images/rock.png" class="thumbnail image" alt="Rock" id="rock">
-                        <img src="assets/images/paper.jpg" class="thumbnail image" alt="Paper" id="paper">
-                        <img src="assets/images/scissor.jpg" class="thumbnail image" alt="Scissors" id="scissors">
                     </div>
-                    <div class="col-md-2">
-                        <div class="alert alert-warning" role="alert">
-                            <h1 class="display-4">Result</h1>
-                        </div>
-                        <img src="" class="thumbnail image" alt="Rock" id="rock">
+                    <div class="col-md-4">
+                        <img src="assets/images/rock.png" class="img-fluid image" alt="Rock" id="rock">
                     </div>
-                    <div class="col-md-3">
-                        <div class="alert alert-info" role="alert">
-                            <h1 class="display-4" id="user"></h1>
-                        </div>
-                        <img src="" class="thumbnail image" alt="Rock" id="rock">
+                    <div class="col-md-4">
+                        <img src="assets/images/paper.jpg" class="img-fluid image" alt="Paper" id="paper">
                     </div>
+                    <div class="col-md-4">
+                        <img src="assets/images/scissor.jpg" class="img-fluid image" alt="Scissors" id="scissors">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="alert alert-info" role="alert">
+                        <h1 class="display-4">Player 2</h1>
+                    </div>
+                    <h3 id="waiting"></h3>
+                    <img src="" class="thumbnail image" alt="Rock" id="opponent">
+                </div>
+                <br/>
+                <br/>
+                <div class="col-md-12">
+                    <div class="alert alert-warning" role="alert">
+                        <h1 class="display-4">Result</h1>
+                    </div>
+                    <h1 id="titleResult"></h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Me</th>
+                                <th scope="col">Opponent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Win</th>
+                                <th id="winMyCount">0</th>
+                                <td id="winOpponent">0</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Loose</th>
+                                <th id="looseMyCount">0</th>
+                                <td id="looseOpponent">0</td>
+                            </tr>
+                        </tbody>
+                    </table>                    
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Chat</label>
                     <select multiple class="form-control" id="chats">
 
                     </select>
@@ -92,6 +107,24 @@
                     <textarea class="form-control" id="textArea" rows="3"></textarea>
                     <br/>
                     <button type="submit" id="sendMessage" class="btn btn-primary mb-2">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="divModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="headerModal">
+                    <h1 class="modal-title">Login</h1>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="exampleFormControlTextarea1">Username</label>
+                    <input type="text" class="form-control" id="userName" placeholder="username">
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="saveUser" class="btn btn-primary mb-2">Start session</button>
                 </div>
             </div>
         </div>
