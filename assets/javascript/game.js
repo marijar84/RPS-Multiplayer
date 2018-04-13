@@ -54,7 +54,7 @@ $(document).on("click", "#saveUser", function (event) {
     $("#player1").text("Hi! " + nameInput);
 
     dataRef.ref("chat").remove();
-    $("chats").empty();
+    $("#chats").empty();
 
 
     userId = countUser;
@@ -74,7 +74,7 @@ $(document).on("click", "#sendMessage", function (event) {
     var user = $("#user").text();
 
     dataRef.ref("chat").push({
-        userName: user,
+        userName: nameInput,
         message: sendMessage
     });
 
@@ -118,7 +118,7 @@ dataRef.ref("chat").on("child_added", function (childSnapshot) {
 
     var htmlText = "";
 
-    console.log("chat",  childSnapshot.val().userName);
+    console.log("chat",  childSnapshot.val());
 
     if (childSnapshot.val().message.includes("disconnected") == true) {
         htmlText = "<var>" + childSnapshot.val().message + "</var>"
@@ -131,17 +131,13 @@ dataRef.ref("chat").on("child_added", function (childSnapshot) {
     $("#chats").append(option);
 });
 
-/*dataRef.ref("chat").on("child_removed", function (childSnapshot) {
-    console.log("Remover chat");
-    dataRef.ref("chat").remove();
-});*/
-
 
 dataRef.ref("players").on("child_changed", function (childSnapshot) {
     if (childSnapshot.val().name != nameInput) {
         opponentOption = childSnapshot.val().option;
 
         player2 = childSnapshot.val().played;
+        opponentName = childSnapshot.val().name;
 
         $("#winOpponent").text(childSnapshot.val().win);
         $("#looseOpponent").text(childSnapshot.val().losses);
@@ -170,13 +166,6 @@ dataRef.ref("players").on("child_added", function (childSnapshot) {
     console.log("Errors handled: " + errorObject.code);
 });
 
-dataRef.ref("players").on("value", function (snapshot) {
-    snapshot.forEach(function (childSnapshot) {
-        //console.log("value", childSnapshot.val().name);
-    });
-}, function (errorObject) {
-    console.log("Errors handled: " + errorObject.code);
-});
 
 function setOpponentImage(opponentOption) {
     $("#opponent").css("visibility", "visible");
