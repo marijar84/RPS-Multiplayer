@@ -118,8 +118,6 @@ dataRef.ref("chat").on("child_added", function (childSnapshot) {
 
     var htmlText = "";
 
-    console.log("chat",  childSnapshot.val());
-
     if (childSnapshot.val().message.includes("disconnected") == true) {
         htmlText = "<var>" + childSnapshot.val().message + "</var>"
     }
